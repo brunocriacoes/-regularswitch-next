@@ -6,10 +6,10 @@ export default function Home() {
     <div>
       <div className="container mx-auto pt-10">
         <header>
-          <div>
-            <nav>
+          <div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", paddingTop: "20px"}}>
+            <nav style={{display: "flex", justifyContent: "center"}}>
               <Link href="https://regularswitch.com/" legacyBehavior>
-                <Image src={Logo} alt="RSW" className="" width={85} />
+                <Image src={Logo} alt="RSW" className="" width={80} />
               </Link>
             </nav>
             <nav>
@@ -70,7 +70,7 @@ export default function Home() {
                 </li>
               </ul>
             </nav>
-            <div>
+            <div style={{display: "flex", justifyContent: "center"}}>
               <span>EN PT</span>
             </div>
           </div>
