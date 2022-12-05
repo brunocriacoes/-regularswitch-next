@@ -6,3 +6,31 @@ body{
     background-color: black;
     color: #fff;
 }
+
+@font-face {
+	font-family: "HK Grotesk";
+	font-display: swap;
+	src: url('../public/fonts/HKGrotesk-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: "HK Grotesk";
+	font-style: italic;
+	font-display: swap;
+	src: url('../public/fonts/HKGrotesk-Italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: "HK Grotesk";
+	font-weight: bold;
+	font-display: swap;
+	src: url('../public/fonts/HKGrotesk-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: "HK Grotesk";
+	font-style: italic;
+	font-weight: bold;
+	font-display: swap;
+	src: url('../public/fonts/HKGrotesk-BoldItalic.woff2') format('woff2');
+}

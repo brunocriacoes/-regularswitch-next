@@ -2,7 +2,7 @@ import HeaderComponents from "../components/HeaderComponents";
 import FooterComponents from "../components/FooterComponents";
 import Image from 'next/image'
 
-export default function Home({ posts }: any) {
+export default function Home({ posts = [] }: any) {
   return (
     <div>
       <HeaderComponents />
