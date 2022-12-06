@@ -6,6 +6,9 @@ module.exports = {
     ],
     theme: {
         extend: {},
+        fontFamily: {
+            hk: ["HK Grotesk", 'sans-serif']
+        }
     },
     plugins: [],
 }
