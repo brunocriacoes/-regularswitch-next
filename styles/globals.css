@@ -34,3 +34,9 @@ body{
 	font-display: swap;
 	src: url('../public/fonts/HKGrotesk-BoldItalic.woff2') format('woff2');
 }
+
+@font-face {
+	src: url('https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2');
+	font-family:'HK-home';
+	font-style: normal;
+}

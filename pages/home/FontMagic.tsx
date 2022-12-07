@@ -1,68 +1,75 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function () {
-
-    var maxDist
-    const mouse = { x: 0, y: 0 }
-    const [cursor, setCursor] = useState({ x: 0, y: 0 })
-
+export default function FontMagic () {
+    const [cursorX, setCursorX] = useState(0)
+    const [largura, setLargura] = useState(0)
     const contentText = useRef<HTMLDivElement>(null)
-
     function mouseMove($e: MouseEvent) {
-        setCursor({
-            x: $e?.clientX,
-            y: $e?.clientY,
-        })
+        setCursorX($e?.clientX)
     }
-    function TouchMove($e: TouchEvent) {
-        setCursor({
-            x: $e?.changedTouches[0].clientX,
-            y: $e?.changedTouches[0].clientY,
-        })
+    // function TouchMove($e: TouchEvent) {
+    //     setCursorX($e?.changedTouches[0].clientX)
+    // }
+    function escala() {
+        let meio = largura / 2
+        if(cursorX > meio) {
+            return largura - cursorX
+        }
+        return cursorX
     }
-
     const optionTouch = {
         passive: false
     }
-
     useEffect(() => {
-        setCursor({
-            x: contentText.current?.clientWidth || 0,
-            y: contentText.current?.clientHeight || 0
-        })
+        setLargura(contentText.current?.clientWidth || 0)
         contentText.current?.addEventListener("mousemove", mouseMove);
-        contentText.current?.addEventListener("touchmove", TouchMove, optionTouch);
+        // contentText.current?.addEventListener("touchmove", TouchMove, optionTouch);
     }, [])
 
     return (
         <div
-            className="text-[200px] text-white text-center uppercase font-hk"
+            className="text-[200px] text-white text-center uppercase font-home py-8"
             ref={contentText}
         >
+            <span className="text-[20px]">
+                <span>
+                    - x: {cursorX}
+                    - L:{largura} 
+                    - S: {escala()}
+                    - wdth: {escala()/20}
+                    </span>
+            </span>
             <div className="flex justify-center">
                 {'regular'.split('').map(letra =>
                     <span
                         key={'p_1_' + letra}
                         style={{
                             textRendering: 'optimizeSpeed',
-                            width: 100,
-                            userSelect: 'none',
-                            margin: '0 auto',
-                            textTransform: 'uppercase',
                             fontSize: 400,
-                            color: '#FFF',
                             lineHeight: '0.8em',
-                            fontWeight: 50,
-                            opacity: 1,
-                            fontVariationSettings: `"wght" 100, "wdth" 5, "ital" 0`
+                            fontVariationSettings: `"wght" ${escala()}, "wdth" ${escala()/20}, "ital" 0`                            
                         }}
                     >
                         {letra}
                     </span>
                 )}
             </div>
-            <span className="block"></span>
-            <span>switch</span>
+            <div className="flex justify-center">
+                {'switch'.split('').map(letra =>
+                    <span
+                        key={'p_1_' + letra}
+                        style={{
+                            textRendering: 'optimizeSpeed',
+                            fontSize: 400,
+                            lineHeight: '0.8em',
+                            fontVariationSettings: `"wght" ${escala()}, "wdth" 5, "ital" 0`                            
+                        }}
+                    >
+                        {letra}
+                    </span>
+                )}
+            </div>
+            
         </div>
     )
 
