@@ -7,7 +7,8 @@ module.exports = {
     theme: {
         extend: {},
         fontFamily: {
-            hk: ["HK Grotesk", 'sans-serif']
+            hk: ["HK Grotesk", 'sans-serif'],
+            home: ["HK-home", 'sans-serif'],
         }
     },
     plugins: [],

@@ -1,68 +1,83 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function () {
-
-    var maxDist
-    const mouse = { x: 0, y: 0 }
-    const [cursor, setCursor] = useState({ x: 0, y: 0 })
-
+export default function FontMagic () {
+    const [cursorX, setCursorX] = useState(0)
+    const [largura, setLargura] = useState(0)
     const contentText = useRef<HTMLDivElement>(null)
-
+    const refsLetras = useRef([])
     function mouseMove($e: MouseEvent) {
-        setCursor({
-            x: $e?.clientX,
-            y: $e?.clientY,
-        })
+        setCursorX($e?.clientX)
     }
-    function TouchMove($e: TouchEvent) {
-        setCursor({
-            x: $e?.changedTouches[0].clientX,
-            y: $e?.changedTouches[0].clientY,
-        })
-    }
+    // function TouchMove($e: TouchEvent) {
+    //     setCursorX($e?.changedTouches[0].clientX)
+    // }
+    function escala( name:any ) {
+        let x = 0
+        let distancia = 0
+        if( typeof document !== "undefined" ) {
 
+            let $elemento = document.getElementById(name)
+            if($elemento) {
+                x = $elemento?.offsetLeft || 0
+                let letra = name.substr(6,1)
+                distancia = cursorX - x
+            }
+        }
+        let meio = largura / 2
+        if(distancia > meio) {
+            return distancia * -1 + 300
+        }
+        return  distancia + 300
+    }
     const optionTouch = {
         passive: false
     }
-
     useEffect(() => {
-        setCursor({
-            x: contentText.current?.clientWidth || 0,
-            y: contentText.current?.clientHeight || 0
-        })
+        setLargura(contentText.current?.clientWidth || 0)
         contentText.current?.addEventListener("mousemove", mouseMove);
-        contentText.current?.addEventListener("touchmove", TouchMove, optionTouch);
+        // contentText.current?.addEventListener("touchmove", TouchMove, optionTouch);
     }, [])
 
     return (
         <div
-            className="text-[200px] text-white text-center uppercase font-hk"
+            className="text-[200px] text-white text-center uppercase font-home py-8"
             ref={contentText}
         >
+            
             <div className="flex justify-center">
-                {'regular'.split('').map(letra =>
+                {'regular'.split('').map((letra,i) =>
                     <span
-                        key={'p_1_' + letra}
+                        key={`t_1_${i}_${letra}`}
+                        id={`t_1_${i}_${letra}`}
                         style={{
                             textRendering: 'optimizeSpeed',
-                            width: 100,
-                            userSelect: 'none',
-                            margin: '0 auto',
-                            textTransform: 'uppercase',
                             fontSize: 400,
-                            color: '#FFF',
                             lineHeight: '0.8em',
-                            fontWeight: 50,
-                            opacity: 1,
-                            fontVariationSettings: `"wght" 100, "wdth" 5, "ital" 0`
+                            fontVariationSettings: `"wght" ${escala('t_1_'+i+'_'+letra)}, "wdth" ${escala('t_1_'+i+'_'+letra)/20}, "ital" 0`                            
+                        }}
+                    >
+                        {letra}
+                    </span>
+                )}
+            </div> 
+            
+            <div className="flex justify-center">
+                {'switch'.split('').map((letra,i) =>
+                    <span
+                        key={`t_2_${i}_${letra}`}
+                        id={`t_2_${i}_${letra}`}
+                        style={{
+                            textRendering: 'optimizeSpeed',
+                            fontSize: 400,
+                            lineHeight: '0.8em',
+                            fontVariationSettings: `"wght" ${escala('t_2_'+i+'_'+letra)}, "wdth" ${escala('t_2_'+i+'_'+letra)/20}, "ital" 0`                            
                         }}
                     >
                         {letra}
                     </span>
                 )}
             </div>
-            <span className="block"></span>
-            <span>switch</span>
+            
         </div>
     )
 
