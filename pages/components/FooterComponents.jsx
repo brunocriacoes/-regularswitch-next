@@ -1,8 +1,8 @@
 export default function FooterComponents() {
   return (
-    <div className="container mx-auto text-sm">
-      <div className="grid grid-cols-4">
-        <nav>
+    <div className="sm: px-5 xl: container mx-auto text-sm">
+      <div className="sm: flex justify-center flex-col xl:grid grid-cols-4">
+        <nav className="sm: mb-8">
           <ul>
             <li>
               <span className="select-none">© 2020 Regularswitch</span>
@@ -12,7 +12,7 @@ export default function FooterComponents() {
             </li>
           </ul>
         </nav>
-        <nav>
+        <nav className="sm: mb-8">
           <ul>
             <li>
               <span className="select-none">+55 11 (9) 45408448</span>

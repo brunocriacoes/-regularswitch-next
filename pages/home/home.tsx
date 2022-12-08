@@ -1,15 +1,13 @@
 import HeaderComponents from "../components/HeaderComponents";
 import FooterComponents from "../components/FooterComponents";
-import Image from "next/image";
+import Image from 'next/image'
+import FontMagic from "./FontMagic";
 
-export default function Home({ posts }: any) {
+export default function Home({ posts = [] }: any) {
   return (
     <div>
       <HeaderComponents />
-      <div className="text-[200px] text-white text-center uppercase">
-        <span className="block">regular</span>
-        <span className="block">switch</span>
-      </div>
+      <FontMagic />
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {posts.map((p: any) => (

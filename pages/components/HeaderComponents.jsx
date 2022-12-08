@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "../../img/logo.png";
+import menu from "../../img/menu.png";
 
 export default function HeaderComponents() {
   return (
     <div>
-      <div className="mx-auto pt-5">
+      <div className="mx-auto px-5 pt-5">
         <header>
-          <div className="grid grid-cols-5">
+          <div className=" sm: flex justify-between xl:grid grid-cols-5">
             <nav className="flex justify-center">
               <Link href="https://regularswitch.com/" legacyBehavior>
                 <Image
@@ -17,7 +18,16 @@ export default function HeaderComponents() {
                 />
               </Link>
             </nav>
-            <nav className="flex justify-center">
+            <nav className="hidden sm:flex items-center" >
+              <div className="">
+              <Image
+                  src={menu}
+                  alt="MENU"
+                  className="w-5 h-5 cursor-pointer"
+                />
+              </div>
+            </nav>
+            <nav className="sm: hidden xl:flex justify-center">
               <ul>
                 <li>
                   <span>São Paulo / Lyon</span>
@@ -32,7 +42,7 @@ export default function HeaderComponents() {
                 </li>
               </ul>
             </nav>
-            <nav className="flex justify-center">
+            <nav className="sm: hidden xl:flex justify-center">
               <ul>
                 <li>
                   <Link href="" legacyBehavior>
@@ -56,7 +66,7 @@ export default function HeaderComponents() {
                 </li>
               </ul>
             </nav>
-            <nav className="flex justify-center">
+            <nav className="sm: hidden xl:flex justify-center">
               <ul>
                 <li>
                   <Link href="" legacyBehavior>
@@ -75,7 +85,7 @@ export default function HeaderComponents() {
                 </li>
               </ul>
             </nav>
-            <div className="flex justify-center">
+            <div className="sm: hidden xl:flex justify-center">
               <span>EN PT</span>
             </div>
           </div>
