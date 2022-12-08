@@ -4,18 +4,30 @@ export default function FontMagic () {
     const [cursorX, setCursorX] = useState(0)
     const [largura, setLargura] = useState(0)
     const contentText = useRef<HTMLDivElement>(null)
+    const refsLetras = useRef([])
     function mouseMove($e: MouseEvent) {
         setCursorX($e?.clientX)
     }
     // function TouchMove($e: TouchEvent) {
     //     setCursorX($e?.changedTouches[0].clientX)
     // }
-    function escala() {
-        let meio = largura / 2
-        if(cursorX > meio) {
-            return largura - cursorX
+    function escala( name:any ) {
+        let x = 0
+        let distancia = 0
+        if( typeof document !== "undefined" ) {
+
+            let $elemento = document.getElementById(name)
+            if($elemento) {
+                x = $elemento?.offsetLeft || 0
+                let letra = name.substr(6,1)
+                distancia = cursorX - x
+            }
         }
-        return cursorX
+        let meio = largura / 2
+        if(distancia > meio) {
+            return distancia * -1 + 300
+        }
+        return  distancia + 300
     }
     const optionTouch = {
         passive: false
@@ -31,38 +43,34 @@ export default function FontMagic () {
             className="text-[200px] text-white text-center uppercase font-home py-8"
             ref={contentText}
         >
-            <span className="text-[20px]">
-                <span>
-                    - x: {cursorX}
-                    - L:{largura} 
-                    - S: {escala()}
-                    - wdth: {escala()/20}
-                    </span>
-            </span>
+            
             <div className="flex justify-center">
-                {'regular'.split('').map(letra =>
+                {'regular'.split('').map((letra,i) =>
                     <span
-                        key={'p_1_' + letra}
+                        key={`t_1_${i}_${letra}`}
+                        id={`t_1_${i}_${letra}`}
                         style={{
                             textRendering: 'optimizeSpeed',
                             fontSize: 400,
                             lineHeight: '0.8em',
-                            fontVariationSettings: `"wght" ${escala()}, "wdth" ${escala()/20}, "ital" 0`                            
+                            fontVariationSettings: `"wght" ${escala('t_1_'+i+'_'+letra)}, "wdth" ${escala('t_1_'+i+'_'+letra)/20}, "ital" 0`                            
                         }}
                     >
                         {letra}
                     </span>
                 )}
-            </div>
+            </div> 
+            
             <div className="flex justify-center">
-                {'switch'.split('').map(letra =>
+                {'switch'.split('').map((letra,i) =>
                     <span
-                        key={'p_1_' + letra}
+                        key={`t_2_${i}_${letra}`}
+                        id={`t_2_${i}_${letra}`}
                         style={{
                             textRendering: 'optimizeSpeed',
                             fontSize: 400,
                             lineHeight: '0.8em',
-                            fontVariationSettings: `"wght" ${escala()}, "wdth" 5, "ital" 0`                            
+                            fontVariationSettings: `"wght" ${escala('t_2_'+i+'_'+letra)}, "wdth" ${escala('t_2_'+i+'_'+letra)/20}, "ital" 0`                            
                         }}
                     >
                         {letra}
