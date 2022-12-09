@@ -8,7 +8,7 @@ export default function HeaderComponents() {
     <div>
       <div className="mx-auto px-5 pt-5">
         <header>
-          <div className=" sm: flex justify-between xl:grid grid-cols-5">
+          <div className="hidden sm: flex justify-between xl:grid grid-cols-5">
             <nav className="flex justify-center">
               <Link href="https://regularswitch.com/" legacyBehavior>
                 <Image
@@ -18,9 +18,9 @@ export default function HeaderComponents() {
                 />
               </Link>
             </nav>
-            <nav className="hidden sm:flex items-center" >
+            <nav className=" sm:flex items-center flex md:hidden lx:hidden">
               <div className="">
-              <Image
+                <Image
                   src={menu}
                   alt="MENU"
                   className="w-5 h-5 cursor-pointer"
@@ -88,6 +88,19 @@ export default function HeaderComponents() {
             <div className="sm: hidden xl:flex justify-center">
               <span>EN PT</span>
             </div>
+          </div>
+          <div className="relative">
+            <nav className="fixed z-10 inset-0 bg-black text-[33px]">
+              <ul className="fixed left-5 bottom-14">
+                <li>Trabalhos selecionados</li>
+                <li>Marca</li>
+                <li>Experiencia digital</li>
+                <li>Arquitetura gráfica</li>
+                <li>Pagina inicial</li>
+                <li>Pagina inicial</li>
+                <li>Pagina inicial</li>
+              </ul>
+            </nav>
           </div>
         </header>
       </div>

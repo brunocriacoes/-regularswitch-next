@@ -7,7 +7,7 @@ export default function Home({ posts = [] }: any) {
   return (
     <div>
       <HeaderComponents />
-      <FontMagic />
+      {/* <FontMagic /> */}
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {posts.map((p: any) => (
