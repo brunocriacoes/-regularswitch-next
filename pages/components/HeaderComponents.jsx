@@ -1,14 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import Logo from "../../img/logo.png";
 import menu from "../../img/menu.png";
+
+
+const [eventClik, setEventClik] = useState(0)
 
 export default function HeaderComponents() {
   return (
     <div>
       <div className="mx-auto px-5 pt-5">
         <header>
-          <div className="hidden sm: flex justify-between xl:grid grid-cols-5">
+          <div className=" sm: flex justify-between xl:grid grid-cols-5">
             <nav className="flex justify-center">
               <Link href="https://regularswitch.com/" legacyBehavior>
                 <Image
@@ -22,8 +26,9 @@ export default function HeaderComponents() {
               <div className="">
                 <Image
                   src={menu}
-                  alt="MENU"
+                  alt="menu"
                   className="w-5 h-5 cursor-pointer"
+                  onClick={() => setEventClik(eventClik + 1)}
                 />
               </div>
             </nav>
@@ -89,7 +94,7 @@ export default function HeaderComponents() {
               <span>EN PT</span>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative hidden">
             <nav className="fixed z-10 inset-0 bg-black text-[33px]">
               <ul className="fixed left-5 bottom-14">
                 <li>Trabalhos selecionados</li>
