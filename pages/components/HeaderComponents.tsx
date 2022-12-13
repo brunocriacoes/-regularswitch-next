@@ -5,9 +5,9 @@ import Logo from "../../img/logo.png";
 import menu from "../../img/menu.png";
 
 
-const [eventClik, setEventClik] = useState(0)
 
 export default function HeaderComponents() {
+  const [eventClik, setEventClik] = useState(0)
   return (
     <div>
       <div className="mx-auto px-5 pt-5">
