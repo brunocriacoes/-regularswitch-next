@@ -1,4 +1,6 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// https://regularswitch.com/wp-json/wp/v2/pages/?slug=contact-3
+// https://regularswitch.com/wp-json/wp/v2/pages/?slug=contact-3&translate=EN
+
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {

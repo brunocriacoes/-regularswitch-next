@@ -5,11 +5,12 @@ import Logo from "../../img/logo.png";
 import menu from "../../img/menu.png";
 
 
-
 export default function HeaderComponents() {
-  const [eventClik, setEventClik] = useState(0)
+  const [eventClick, setEventClick] = useState(0)
+
   return (
     <div>
+
       <div className="mx-auto px-5 pt-5">
         <header>
           <div className=" sm: flex justify-between xl:grid grid-cols-5">
@@ -28,7 +29,7 @@ export default function HeaderComponents() {
                   src={menu}
                   alt="menu"
                   className="w-5 h-5 cursor-pointer"
-                  onClick={() => setEventClik(eventClik + 1)}
+                  onClick={() => setEventClick(eventClick + 1)}
                 />
               </div>
             </nav>
