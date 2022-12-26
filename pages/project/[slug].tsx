@@ -47,8 +47,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(req: any) {
 	const { slug } = req.params;
-	let url = `https://regularswitch-next.vercel.app/api/project/${slug}`
-	// let url = `http://localhost:3000/api/project/${slug}`
+	let base = process.env?.BASE || 'http://localhost:3000'
+	let url = base + "/api/project/" + slug
 	let requestPosts = await fetch(url)
 	let allPosts = await requestPosts.json();
 	return {

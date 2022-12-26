@@ -10,9 +10,8 @@ export default function Index({allPosts}: any) {
 }
 
 export async function getStaticProps() {
-
-  let url = "https://regularswitch-next.vercel.app/api/project"
-  // let url = "http://localhost:3000/api/project"
+  let base = process.env?.BASE || 'http://localhost:3000'
+  let url = base + "/api/project"
   let requestPosts = await fetch(url)
   let allPosts = await requestPosts.json();
 
