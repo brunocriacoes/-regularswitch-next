@@ -41,14 +41,13 @@ export async function getStaticPaths() {
 	})
 	return {
 		paths,
-		// fallback: 'blocking'
-		fallback: false
+		fallback: 'blocking'
 	}
 }
 
 export async function getStaticProps(req: any) {
 	const { slug } = req.params;
-	let base = process.env?.BASE || 'http://localhost:3000'
+	let base = process.env?.BASE
 	let url = base + "/api/project/" + slug
 	let requestPosts = await fetch(url)
 	let allPosts = await requestPosts.json();
