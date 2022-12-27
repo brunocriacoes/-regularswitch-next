@@ -35,8 +35,8 @@ function Home({ posts = [] }: any) {
 											p.image_full
 										}
 										layout='fill'
-    									objectFit='cover'
-										
+										objectFit='cover'
+
 									/>
 								</div>
 								<h1 className="text-white">{p.title}</h1>
@@ -53,24 +53,27 @@ function Home({ posts = [] }: any) {
 
 
 
-export default function Index({allPosts}: any) {
-  return (
-    <div>
-      <Home posts={allPosts}></Home>
-    </div>
-  );
+export default function Index({ allPosts }: any) {
+	return (
+		<div>
+			<Home posts={allPosts}></Home>
+		</div>
+	);
 }
 
 export async function getStaticProps() {
-  let base = process.env?.BASE || 'http://localhost:3000'
-  let url = base + "/api/project"
-  let requestPosts = await fetch(url)
-  let allPosts = await requestPosts.json();
+	let base = process.env?.BASE
+	let url = base + "/api/project"
+	let allPosts = []
+	try {
+		let requestPosts = await fetch(url)
+		allPosts = await requestPosts.json();
+	} catch (error) { }
 
-  return {
-    props: {
-      allPosts
-    },
-    revalidate: 10
-  }
+	return {
+		props: {
+			allPosts
+		},
+		revalidate: 10
+	}
 }

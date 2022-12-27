@@ -2,10 +2,8 @@ import React from "react";
 import HeaderComponents from "../../components/HeaderComponents";
 import FooterComponents from "../../components/FooterComponents";
 import Image from 'next/image'
-import Link from 'next/link'
 
-
-export default function Index({ allPosts }: any) {
+export default function ProjectBySlug({ allPosts }: any) {
 	return (
 		<div>
 			<HeaderComponents />
@@ -49,8 +47,11 @@ export async function getStaticProps(req: any) {
 	const { slug } = req.params;
 	let base = process.env?.BASE
 	let url = base + "/api/project/" + slug
-	let requestPosts = await fetch(url)
-	let allPosts = await requestPosts.json();
+	let allPosts = []
+	try {
+		let requestPosts = await fetch(url)
+		allPosts = await requestPosts.json()
+	} catch (error) { }
 	return {
 		props: {
 			allPosts
