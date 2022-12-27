@@ -1,9 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Logo from "../../img/logo.png";
-import menu from "../../img/menu.png";
-
+import Logo from "../public/logo-blanc.svg";
+import menu from "../public/menu.png";
 
 export default function HeaderComponents() {
   const [eventClick, setEventClick] = useState(0)

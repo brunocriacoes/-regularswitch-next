@@ -6,12 +6,12 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<ListPost>
 ) {
-	let slug = `${req.query?.slug}`
 	let lang = Language(req)
 	let query: data = {
 		_embed: '',
 		per_page: 22
 	}
 	let apiWp = await GetApi('/project/', query, lang)
-	res.status(200).json(apiWp)
+
+	res.status(200).json(apiWp.map(p => ({ ...p, content: "" })))
 }

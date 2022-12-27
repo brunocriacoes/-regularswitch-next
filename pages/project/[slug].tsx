@@ -1,6 +1,6 @@
 import React from "react";
-import HeaderComponents from "../components/HeaderComponents";
-import FooterComponents from "../components/FooterComponents";
+import HeaderComponents from "../../components/HeaderComponents";
+import FooterComponents from "../../components/FooterComponents";
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -34,13 +34,13 @@ type paths = {
 }
 
 export async function getStaticPaths() {
-	let products: paths[];
-	products = []
-	const paths = products.map(category => {
-		return { params: { slug: category.slug } }
-	})
+	// let products: paths[];
+	// products = []
+	// const paths = products.map(category => {
+	// 	return { params: { slug: category.slug } }
+	// })
 	return {
-		paths,
+		paths: [],
 		fallback: 'blocking'
 	}
 }
