@@ -56,8 +56,8 @@ export function porter(payloadWp: listResponseWp): ListPost {
         title: p.title.rendered,
         slug: p.slug,
         link: p.link,
-        image_medium: p._embedded["wp:featuredmedia"][0].media_details.sizes.medium.source_url,
-        image_full: p._embedded["wp:featuredmedia"][0].media_details.sizes.full.source_url,
+        image_medium: p._embedded["wp:featuredmedia"]?.[0]?.media_details?.sizes?.medium?.source_url,
+        image_full: p._embedded["wp:featuredmedia"]?.[0]?.media_details?.sizes.full?.source_url,
         content: p.content.rendered,
     }))
 }
