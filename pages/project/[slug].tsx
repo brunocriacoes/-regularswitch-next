@@ -2,11 +2,12 @@ import React from "react";
 import HeaderComponents from "../../components/HeaderComponents";
 import FooterComponents from "../../components/FooterComponents";
 import Image from 'next/image'
+import Language from "../../components/Language";
 
-export default function ProjectBySlug({ allPosts }: any) {
+export default function ProjectBySlug({ allPosts, lang }: any) {
 	return (
 		<div>
-			<HeaderComponents />
+			<HeaderComponents lang={lang} />
 			{allPosts.map((p: any) => (
 				<div key={p.id}>
 					<div className="relative w-full h-[100vh]">
@@ -48,13 +49,15 @@ export async function getStaticProps(req: any) {
 	let base = process.env?.BASE
 	let url = base + "/api/project/" + slug
 	let allPosts = []
+	let lang = Language(req)
 	try {
 		let requestPosts = await fetch(url)
 		allPosts = await requestPosts.json()
 	} catch (error) { }
 	return {
 		props: {
-			allPosts
+			allPosts,
+			lang
 		},
 		revalidate: 10
 	}

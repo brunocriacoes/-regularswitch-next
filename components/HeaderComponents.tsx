@@ -3,9 +3,33 @@ import Link from "next/link";
 import { useState } from "react";
 import Logo from "../public/logo-blanc.svg";
 import menu from "../public/menu.png";
+import { getCookie, setCookie } from "./Translate";
 
-export default function HeaderComponents() {
+type headerProps = {
+	lang?: string
+}
+
+export default function HeaderComponents({lang}: headerProps) {
 	const [eventClick, setEventClick] = useState(0)
+
+	function Lang() {
+		let selectLanguage = lang || 'PT'
+		return <>
+			<div className="hidden xl:flex justify-center gap-4">
+				{['EN', 'PT'].map(L => <span key={L}
+					className={
+						"flex cursor-pointer rounded w-[28px] h-[28px] justify-center items-center hover:bg-[#FFF3] " +
+						(selectLanguage == L && "bg-[#FFF2] ")
+
+					}
+					onClick={_ => setCookie('language', L)}
+				>
+					{L}
+				</span>)}
+			</div>
+		</>
+	}
+
 	return (
 		<div>
 			<div className="mx-auto px-5 pt-5">
@@ -90,9 +114,7 @@ export default function HeaderComponents() {
 								</li>
 							</ul>
 						</nav>
-						<div className="sm: hidden xl:flex justify-center">
-							<span>EN PT</span>
-						</div>
+						<Lang />
 					</div>
 					<div className="relative hidden">
 						<nav className="fixed z-10 inset-0 bg-black text-[33px]">
