@@ -6,6 +6,7 @@ export type data = {
     _embed?: string
     slug?: string
     per_page?: number
+    more?: string
 }
 
 export type responseWpMedia = {
@@ -25,7 +26,12 @@ export type responseWp = {
     id: number
     slug: string
     link: string
+    name?: string
+    description?: string
     title: {
+        rendered: string
+    }
+    excerpt: {
         rendered: string
     }
     content: {
@@ -34,18 +40,23 @@ export type responseWp = {
     _embedded: {
         'wp:featuredmedia': responseWpMedia[]
     }
+    "project-category"?: []
 }
 
 export type listResponseWp = Array<responseWp>
 
 export type singlePost = {
     id: number
-    title: string
+    title?: string
     slug: string
+    name?: string
     image_full?: string
     image_medium?: string
     content: string
     link: string
+    more?: string
+    category?: []
+    description?: string
 }
 
 export type ListPost = Array<singlePost>
@@ -53,12 +64,15 @@ export type ListPost = Array<singlePost>
 export function porter(payloadWp: listResponseWp): ListPost {
     return payloadWp.map(p => ({
         id: p.id,
-        title: p.title.rendered,
+        title: p?.title?.rendered || p.name,
         slug: p.slug,
         link: p.link,
-        image_medium: p._embedded["wp:featuredmedia"]?.[0]?.media_details?.sizes?.medium?.source_url,
-        image_full: p._embedded["wp:featuredmedia"]?.[0]?.media_details?.sizes.full?.source_url,
-        content: p.content.rendered,
+        image_medium: p._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes?.medium?.source_url,
+        image_full: p._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes.full?.source_url,
+        content: p?.content?.rendered ,
+        more: p?.excerpt?.rendered,
+        category: p["project-category"],
+        description: p.description
     }))
 }
 

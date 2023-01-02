@@ -7,7 +7,7 @@ export default function ProjectBySlug({ allPosts }: any) {
 		<div>
 			<HeaderComponents />
 			{allPosts.map((p: any) => (
-				<div key={p.id}>
+				<div key={p.id}>					
 					<h1 className="text-white">{p.title}</h1>
 					<div dangerouslySetInnerHTML={{ __html: p.content }} />
 				</div>

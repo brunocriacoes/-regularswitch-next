@@ -74,12 +74,12 @@ export default function HeaderComponents({lang}: headerProps) {
 						<nav className="sm: hidden xl:flex justify-center">
 							<ul>
 								<li>
-									<Link href="work" legacyBehavior>
+									<Link href="/work" legacyBehavior>
 										<a>Selected works</a>
 									</Link>
 								</li>
 								<li>
-									<Link href="branding" legacyBehavior>
+									<Link href="/branding" legacyBehavior>
 										<a>Branding</a>
 									</Link>
 								</li>
@@ -98,12 +98,12 @@ export default function HeaderComponents({lang}: headerProps) {
 						<nav className="sm: hidden xl:flex justify-center">
 							<ul>
 								<li>
-									<Link href="about" legacyBehavior>
+									<Link href="/about" legacyBehavior>
 										<a>Sobre</a>
 									</Link>
 								</li>
 								<li>
-									<Link href="contact-3" legacyBehavior>
+									<Link href="/contact-3" legacyBehavior>
 										<a>Contato</a>
 									</Link>
 								</li>
