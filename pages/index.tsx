@@ -7,7 +7,11 @@ import Link from 'next/link'
 
 
 
-function Home({ posts = [] }: any) {
+function Home({ posts = [], cats = [] }: any) {
+	function getName(id: any) {
+		return cats.find( (c:any) => c.id == id ).slug
+	}
+
 	return (
 		<div>
 			<HeaderComponents />
@@ -40,6 +44,8 @@ function Home({ posts = [] }: any) {
 									/>
 								</div>
 								<h1 className="text-white">{p.title}</h1>
+								<div dangerouslySetInnerHTML={{ __html: p.more }} />
+								{p.category && p.category.map( (id:number) => <span key={id}>#{getName(id)}</span> )}
 							</div>
 						</Link>
 					))}
@@ -53,10 +59,10 @@ function Home({ posts = [] }: any) {
 
 
 
-export default function Index({ allPosts }: any) {
+export default function Index({ allPosts, allCat }: any) {
 	return (
 		<div>
-			<Home posts={allPosts}></Home>
+			<Home posts={allPosts} cats={allCat}></Home>
 		</div>
 	);
 }
@@ -65,14 +71,18 @@ export async function getStaticProps() {
 	let base = process.env?.BASE
 	let url = base + "/api/project"
 	let allPosts = []
+	let allCat = []
 	try {
 		let requestPosts = await fetch(url)
-		allPosts = await requestPosts.json();
+		allPosts = await requestPosts.json()
+		let requestCat = await fetch(base + "/api/project/all-category")
+		allCat = await requestCat.json()
 	} catch (error) { }
 
 	return {
 		props: {
-			allPosts
+			allPosts,
+			allCat
 		},
 		revalidate: 10
 	}

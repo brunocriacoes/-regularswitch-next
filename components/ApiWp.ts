@@ -7,6 +7,7 @@ export type data = {
     slug?: string
     per_page?: number
     more?: string
+    categories?: string
 }
 
 export type responseWpMedia = {

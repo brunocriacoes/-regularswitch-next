@@ -1,6 +1,6 @@
 export default function FooterComponents() {
 	return (
-		<div className="sm: px-5 xl: container mx-auto text-sm">
+		<footer className="sm: px-5 xl: container mx-auto text-sm">
 			<div className="sm: flex justify-center flex-col xl:grid grid-cols-4">
 				<nav className="sm: mb-8">
 					<ul>
@@ -34,6 +34,6 @@ export default function FooterComponents() {
 				</nav>
 			</div>
 			<br />
-		</div>
+		</footer>
 	);
 }

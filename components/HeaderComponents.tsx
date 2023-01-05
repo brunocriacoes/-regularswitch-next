@@ -31,7 +31,7 @@ export default function HeaderComponents({lang}: headerProps) {
 	}
 
 	return (
-		<div>
+		<header>
 			<div className="mx-auto px-5 pt-5">
 				<header>
 					<div className=" sm: flex justify-between xl:grid grid-cols-5">
@@ -131,6 +131,6 @@ export default function HeaderComponents({lang}: headerProps) {
 					</div>
 				</header>
 			</div>
-		</div>
+		</header>
 	);
 }
