@@ -10,12 +10,12 @@ export default function ProjectBySlug({ allPosts, lang }: any) {
 			<HeaderComponents lang={lang} />
 			{allPosts.map((p: any) => (
 				<div key={p.id}>
-					<div className="relative w-full h-[100vh]">
+					<div className="fixed top-0 left-0 w-[100vw] z-[-1] h-[100vh]">
 						<Image
 							alt={p.title}
 							src={p.image_full}
 							layout="fill"
-							objectFit="contain"
+							objectFit="cover"
 						/>
 					</div>
 

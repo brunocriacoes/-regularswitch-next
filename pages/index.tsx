@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 function Home({ posts = [], cats = [] }: any) {
 	function getName(id: any) {
-		return cats.find( (c:any) => c.id == id ).slug
+		return cats.find((c: any) => c.id == id).title
 	}
 
 	return (
@@ -17,7 +17,7 @@ function Home({ posts = [], cats = [] }: any) {
 			<HeaderComponents />
 			<FontMagic />
 
-			<section className="text-white container mx-auto text-[50px] font-hk leading-[48px] font-extrabold py-[150px]">
+			<section className="text-white container mx-auto text-[20px] lg:text-[50px] font-hk leading-[1em] font-extrabold py-4 px-4 lg:py-[150px]">
 				<h2 className="block mb-[40px]">Branding / Digital / Arquitetura Gráfica</h2>
 				<p>
 					Regularswitch é uma agência de design multi-cultural
@@ -27,11 +27,11 @@ function Home({ posts = [], cats = [] }: any) {
 				</p>
 			</section>
 
-			<div className="container mx-auto">
+			<div className="container mx-auto p-4">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 					{posts.map((p: any) => (
 						<Link href={'project/' + p.slug} key={p.id}>
-							<div >
+							<div className="font-hk">
 								<div className="block relative w-full h-[500px]">
 									<Image
 										alt={p.title}
@@ -43,9 +43,17 @@ function Home({ posts = [], cats = [] }: any) {
 
 									/>
 								</div>
-								<h1 className="text-white">{p.title}</h1>
-								<div dangerouslySetInnerHTML={{ __html: p.more }} />
-								{p.category && p.category.map( (id:number) => <span key={id}>#{getName(id)}</span> )}
+								<div>
+									<strong className="text-white inline-block mt-4">{p.title}</strong>
+									<div className="inline-block w-[40px] h-[1px] mb-[6px] mx-[6px] bg-[#FFF] "></div>
+									<div dangerouslySetInnerHTML={{ __html: p.more }} />
+									{p.category && p.category.map((id: number) => <span
+										key={id}
+										className="mr-2 text-[#FFF6]"
+									>
+										#{getName(id)}
+									</span>)}
+								</div>
 							</div>
 						</Link>
 					))}

@@ -32,7 +32,7 @@ export default function HeaderComponents({lang}: headerProps) {
 
 	return (
 		<header>
-			<div className="mx-auto px-5 pt-5">
+			<div className="mx-auto px-5 pt-5 bg-gradient-to-b from-[#000] lg:pb-8">
 				<header>
 					<div className=" sm: flex justify-between xl:grid grid-cols-5">
 						<nav className="flex justify-center">

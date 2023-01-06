@@ -29,7 +29,6 @@ export default function ProjectBySlug({ allPosts, allPostCat, allCat, slug }: an
 				<h1 className="text-white">{allPosts[0].title}</h1>
 				<div dangerouslySetInnerHTML={{ __html: allPosts[0].content }} />
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
 					{allPostCat && allPostCat.map((p:any)=> <div key={p.id}>
 						<Link href={'project/' + p.slug} >
 							<div >
@@ -41,7 +40,6 @@ export default function ProjectBySlug({ allPosts, allPostCat, allCat, slug }: an
 										}
 										layout='fill'
 										objectFit='cover'
-
 									/>
 								</div>
 								<h1 className="text-white">{p.title}</h1>
