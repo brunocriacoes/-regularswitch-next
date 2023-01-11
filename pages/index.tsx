@@ -28,34 +28,36 @@ function Home({ posts = [], cats = [] }: any) {
 			</section>
 
 			<div className="container mx-auto p-4">
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-					{posts.map((p: any) => (
-						<Link href={'project/' + p.slug} key={p.id}>
-							<div className="font-hk">
-								<div className="block relative w-full h-[500px]">
-									<Image
+				<div className="columns-1 md:columns-2 gap-4">
+					{posts.filter( (f:any) => f.category.includes(17)).map((p: any) => (
+						<div className="break-inside-avoid pb-4" key={p.id}>
+							<Link href={'project/' + p.slug}  >
+								<div className="font-hk">
+									<div className="block relative w-full overflow-hidden">
+										{/* <Image
 										alt={p.title}
 										src={
 											p.image_full
 										}
-										layout='fill'
+										layout='fill'										
 										objectFit='cover'
-
-									/>
+									/> */}
+										<img className="w-full transition-all  duration-300 hover:scale-[1.05]" src={p.image_full} alt={p.title} />
+									</div>
+									<div>
+										<strong className="text-white inline-block mt-4">{p.title}</strong>
+										<div className="inline-block w-[40px] h-[1px] mb-[6px] mx-[6px] bg-[#FFF] "></div>
+										<div dangerouslySetInnerHTML={{ __html: p.more }} />
+										{p.category && p.category.map((id: number) => <span
+											key={id}
+											className="mr-2 text-[#FFF6]"
+										>
+											#{getName(id)}
+										</span>)}
+									</div>
 								</div>
-								<div>
-									<strong className="text-white inline-block mt-4">{p.title}</strong>
-									<div className="inline-block w-[40px] h-[1px] mb-[6px] mx-[6px] bg-[#FFF] "></div>
-									<div dangerouslySetInnerHTML={{ __html: p.more }} />
-									{p.category && p.category.map((id: number) => <span
-										key={id}
-										className="mr-2 text-[#FFF6]"
-									>
-										#{getName(id)}
-									</span>)}
-								</div>
-							</div>
-						</Link>
+							</Link>
+						</div>
 					))}
 				</div>
 			</div>
