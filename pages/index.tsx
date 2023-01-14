@@ -3,7 +3,9 @@ import HeaderComponents from "../components/HeaderComponents";
 import FooterComponents from "../components/FooterComponents";
 import Image from 'next/image'
 import FontMagic from "../components/FontMagic";
+import FontVariante from "../components/FontVariante";
 import Link from 'next/link'
+
 
 
 
@@ -15,8 +17,8 @@ function Home({ posts = [], cats = [] }: any) {
 	return (
 		<div>
 			<HeaderComponents />
-			<FontMagic />
-
+			<FontVariante text="REGULAR" text2="SWITCH" />
+			<FontVariante text="SWITCH" />
 			<section className="text-white container mx-auto text-[20px] lg:text-[50px] font-hk leading-[1em] font-extrabold py-4 px-4 lg:py-[150px]">
 				<h2 className="block mb-[40px]">Branding / Digital / Arquitetura Gráfica</h2>
 				<p>
@@ -29,7 +31,7 @@ function Home({ posts = [], cats = [] }: any) {
 
 			<div className="container mx-auto p-4">
 				<div className="columns-1 md:columns-2 gap-4">
-					{posts.filter( (f:any) => f.category.includes(17)).map((p: any) => (
+					{posts.filter((f: any) => f.category.includes(17)).map((p: any) => (
 						<div className="break-inside-avoid pb-4" key={p.id}>
 							<Link href={'project/' + p.slug}  >
 								<div className="font-hk">
