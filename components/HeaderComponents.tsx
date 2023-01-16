@@ -57,7 +57,7 @@ export default function HeaderComponents({lang}: headerProps) {
 						<nav className="sm: hidden xl:flex justify-center">
 							<ul>
 								<li>
-									<span>São Paulo / Lyon</span>
+									<span>São Paulo </span>
 								</li>
 								<li>
 									<Link href="tel:+5511945408448" legacyBehavior>
